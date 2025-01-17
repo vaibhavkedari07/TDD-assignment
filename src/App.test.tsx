@@ -89,6 +89,32 @@ describe("Calculator initiation", () => {
       expect(display).toHaveTextContent("-5");
     });
   });
+
+  describe("multiplication", () => {
+    test("should multiply two numbers correctly", () => {
+      render(<Calculator />);
+
+      fireEvent.click(screen.getByText("4"));
+      fireEvent.click(screen.getByText("×"));
+      fireEvent.click(screen.getByText("3"));
+      fireEvent.click(screen.getByText("="));
+
+      const display = screen.getByTestId("display");
+      expect(display).toHaveTextContent("12");
+    });
+
+    test("should handle multiplication by zero", () => {
+      render(<Calculator />);
+
+      fireEvent.click(screen.getByText("5"));
+      fireEvent.click(screen.getByText("×"));
+      fireEvent.click(screen.getByText("0"));
+      fireEvent.click(screen.getByText("="));
+
+      const display = screen.getByTestId("display");
+      expect(display).toHaveTextContent("0");
+    });
+  });
 });
 
 export {};
