@@ -115,6 +115,32 @@ describe("Calculator initiation", () => {
       expect(display).toHaveTextContent("0");
     });
   });
+
+  describe("division", () => {
+    test("should divide two numbers correctly", () => {
+      render(<Calculator />);
+
+      fireEvent.click(screen.getByText("8"));
+      fireEvent.click(screen.getByText("÷"));
+      fireEvent.click(screen.getByText("2"));
+      fireEvent.click(screen.getByText("="));
+
+      const display = screen.getByTestId("display");
+      expect(display).toHaveTextContent("4");
+    });
+
+    test("should handle division by zero", () => {
+      render(<Calculator />);
+
+      fireEvent.click(screen.getByText("5"));
+      fireEvent.click(screen.getByText("÷"));
+      fireEvent.click(screen.getByText("0"));
+      fireEvent.click(screen.getByText("="));
+
+      const display = screen.getByTestId("display");
+      expect(display).toHaveTextContent("Error");
+    });
+  });
 });
 
 export {};
