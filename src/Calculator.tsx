@@ -25,7 +25,9 @@ const Calculator = () => {
     return a + b;
   };
 
-  const subtract = (a: number, b: number) => {};
+  const subtract = (a: number, b: number) => {
+    return a - b;
+  };
 
   const multiply = (a: number, b: number) => {};
 
