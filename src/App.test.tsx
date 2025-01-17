@@ -63,6 +63,32 @@ describe("Calculator initiation", () => {
       });
     });
   });
+
+  describe("subtraction", () => {
+    test("should subtract two numbers correctly", () => {
+      render(<Calculator />);
+
+      fireEvent.click(screen.getByText("8"));
+      fireEvent.click(screen.getByText("-"));
+      fireEvent.click(screen.getByText("3"));
+      fireEvent.click(screen.getByText("="));
+
+      const display = screen.getByTestId("display");
+      expect(display).toHaveTextContent("5");
+    });
+
+    test("should handle negative results", () => {
+      render(<Calculator />);
+
+      fireEvent.click(screen.getByText("3"));
+      fireEvent.click(screen.getByText("-"));
+      fireEvent.click(screen.getByText("8"));
+      fireEvent.click(screen.getByText("="));
+
+      const display = screen.getByTestId("display");
+      expect(display).toHaveTextContent("-5");
+    });
+  });
 });
 
 export {};
