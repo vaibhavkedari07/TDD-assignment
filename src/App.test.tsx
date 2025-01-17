@@ -17,6 +17,22 @@ describe("Calculator initiation", () => {
       expect(displayElement).toHaveTextContent("0");
     });
   });
+
+  describe("Calculator operations", () => {
+    describe("addition", () => {
+      test("should add two numbers correctly", () => {
+        render(<Calculator />);
+
+        fireEvent.click(screen.getByText("5"));
+        fireEvent.click(screen.getByText("+"));
+        fireEvent.click(screen.getByText("3"));
+        fireEvent.click(screen.getByText("="));
+
+        const display = screen.getByTestId("display");
+        expect(display).toHaveTextContent("8");
+      });
+    });
+  });
 });
 
 export {};
