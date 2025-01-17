@@ -9,6 +9,14 @@ describe("Calculator initiation", () => {
       expect(calculatorElement).toBeInTheDocument();
     });
   });
+
+  describe("display", () => {
+    test("should display 0 by default", () => {
+      render(<Calculator />);
+      const displayElement = screen.getByTestId("display");
+      expect(displayElement).toHaveTextContent("0");
+    });
+  });
 });
 
 export {};
