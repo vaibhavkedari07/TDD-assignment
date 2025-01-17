@@ -31,6 +31,36 @@ describe("Calculator initiation", () => {
         const display = screen.getByTestId("display");
         expect(display).toHaveTextContent("8");
       });
+
+      test("should handle decimal addition", () => {
+        render(<Calculator />);
+
+        fireEvent.click(screen.getByText("2"));
+        fireEvent.click(screen.getByText("."));
+        fireEvent.click(screen.getByText("5"));
+        fireEvent.click(screen.getByText("+"));
+        fireEvent.click(screen.getByText("1"));
+        fireEvent.click(screen.getByText("."));
+        fireEvent.click(screen.getByText("5"));
+        fireEvent.click(screen.getByText("="));
+
+        const display = screen.getByTestId("display");
+        expect(display).toHaveTextContent("4");
+      });
+
+      test("should handle multiple additions", () => {
+        render(<Calculator />);
+
+        fireEvent.click(screen.getByText("5"));
+        fireEvent.click(screen.getByText("+"));
+        fireEvent.click(screen.getByText("3"));
+        fireEvent.click(screen.getByText("+"));
+        fireEvent.click(screen.getByText("2"));
+        fireEvent.click(screen.getByText("="));
+
+        const display = screen.getByTestId("display");
+        expect(display).toHaveTextContent("10");
+      });
     });
   });
 });
