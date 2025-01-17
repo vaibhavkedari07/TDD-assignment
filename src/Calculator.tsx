@@ -33,7 +33,10 @@ const Calculator = () => {
     return a * b;
   };
 
-  const divide = (a: number, b: number) => {};
+  const divide = (a: number, b: number) => {
+    if (b === 0) return "Error";
+    return a / b;
+  };
 
   const handleOperator = (op: OperationType): void => {
     const currentValue = parseFloat(display);
